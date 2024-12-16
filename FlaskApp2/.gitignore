@@ -1,0 +1,22 @@
+# Entornos virtuales
+venv/
+
+# Ignorar archivos y carpetas de caché de Python
+__pycache__/
+*.pyc
+
+# Configuraciones locales
+*.log
+*.env
+
+# Archivos generados por sistemas operativos
+.DS_Store
+Thumbs.db
+
+# Configuraciones de IDEs y editores de texto
+.vscode/
+.idea/
+.vs/
+
+# Otros archivos innecesarios
+*.swp

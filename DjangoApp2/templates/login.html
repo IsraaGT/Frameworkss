@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Tema Cyborg de Bootswatch -->
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.3/dist/cyborg/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* FONDO DEL LOGIN */
+        body {
+            background: linear-gradient(to bottom, #2b0a12 0%, #4a1218 50%, #602025 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CONTENEDOR DEL FORMULARIO */
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* TARJETA DEL FORMULARIO */
+        .card {
+            background-color: #4b0e21cc;
+            border: 1px solid #8B213D;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* TÍTULO */
+        h3.text-center {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #F6BABA;
+        }
+
+        /* INPUTS DEL FORMULARIO */
+        .form-control {
+            background-color: #8B213D;
+            color: #ffffff;
+            border: 1px solid #C74A67;
+            border-radius: 5px;
+        }
+
+        .form-control:focus {
+            background-color: #4B0E21;
+            color: #ffffff;
+            border-color: #F6BABA;
+            box-shadow: 0 0 10px #F6BABA;
+        }
+
+        /* BOTÓN DE INGRESAR */
+        .btn-outline-primary {
+            border-color: #00bcd4;
+            color: #00bcd4;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 0 6px #9dcbff;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #00bcd4;
+            color: #000;
+            box-shadow: 0 0 10px #00bcd4;
+        }
+
+        /* MENSAJES DE ERROR */
+        .alert-danger {
+            background-color: #8B213D;
+            color: #ffffff;
+            border: 1px solid #C74A67;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card p-4">
+            <h3 class="text-center">Iniciar sesión</h3>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Ingresar</button>
+            </form>
+            {% for message in messages %}
+                <div class="alert alert-danger mt-3">{{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
